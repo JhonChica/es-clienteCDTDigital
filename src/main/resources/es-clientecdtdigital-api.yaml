@@ -1,7 +1,6 @@
 openapi: 3.0.1
 servers:
   - description: Index swagger
-    #url local
     #- url: https://localhost:8080
     #url produccion
     url: https://api.mibanco.com.co

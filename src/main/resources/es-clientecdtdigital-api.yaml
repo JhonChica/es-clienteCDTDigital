@@ -190,8 +190,8 @@ components:
           type: string
         productoSolicitado:
           type: string
-        clienteBase:
-          $ref: "#/components/schemas/ClienteBaseType"
+#        clienteBase:
+#          $ref: "#/components/schemas/ClienteBaseType"
         codigoNovedadListas:
           type: string
     GeneroEnum:

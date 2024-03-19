@@ -27,13 +27,15 @@ public class ClienteCDTDigitalImpl implements IClienteCDTDigital {
     @Transactional
     @Override
     public ClienteCDTDigitalType crearClienteCdtDigital(ClienteCDTDigitalType clienteCDTDigitalType) {
+        LOG.info("Inicia el metodo crearClienteCdtDigital Impl");
         try {
             ClienteCDTDigital clienteCDTDigital = clienteCDTDigitalMapper.clienteCDTDigitalTypeToEntity(clienteCDTDigitalType);
             clienteCDTDigitalDao.persist(clienteCDTDigital);
-            return clienteCDTDigitalType;
         }catch(ApplicationException e){
             LOG.error("Se presento un error en el metodo crearClienteCdtDigital Impl"+ e.getMessage());
             throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
         }
+        LOG.info("Finaliza el metodo crearClienteCdtDigital Impl");
+        return clienteCDTDigitalType;
     }
 }

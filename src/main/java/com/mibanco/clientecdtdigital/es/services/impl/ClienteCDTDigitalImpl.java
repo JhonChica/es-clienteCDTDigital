@@ -10,7 +10,6 @@ import com.mibanco.clientecdtdigital.es.utils.mapper.ClienteCDTDigitalMapper;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
-import jakarta.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,7 +37,6 @@ public class ClienteCDTDigitalImpl implements IClienteCDTDigital {
         LOG.info("Finaliza el metodo crearClienteCdtDigital Impl");
         return clienteCDTDigitalType;
     }
-
     @Override
     public ClienteCDTDigitalType buscarClienteCDTDigital(Integer idCliente) {
         LOG.info("Inicia el metodo buscarClienteCDTDigital Impl");
@@ -52,7 +50,6 @@ public class ClienteCDTDigitalImpl implements IClienteCDTDigital {
         LOG.info("Finaliza el metodo buscarClienteCDTDigital Impl");
         return clienteCDTDigitalType;
     }
-
     @Transactional
     @Override
     public void eliminarClienteCDT(Integer idCliente) {

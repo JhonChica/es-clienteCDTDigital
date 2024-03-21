@@ -16,16 +16,57 @@ public class ClienteCDTDigidalController implements V1ClientecdtdigitalApi {
     ClienteCDTDigitalImpl clienteCDTDigitalImpl;
 
     @Override
-    public Response crearClienteCdtDigital(ClienteCDTDigitalType clienteCDTDigitalType) {
-        LOG.info("Inicia el metodo crearClienteCdtDigital Controller");
-        ClienteCDTDigitalType clienteCDTDigitalTypeResponse = null;
+    public Response buscarClienteCDTDigital(Integer idCliente) {
+        LOG.info("Inicia el metodo buscarClienteCDTDigital_1 Controller");
+        ClienteCDTDigitalType clienteCDTDigitalTypeResponse ;
         try{
-            clienteCDTDigitalTypeResponse = clienteCDTDigitalImpl.crearClienteCdtDigital(clienteCDTDigitalType);
+            clienteCDTDigitalTypeResponse = clienteCDTDigitalImpl.buscarClienteCDTDigital(idCliente);
         }catch(ApplicationException e){
-            LOG.error("Se presento un error en el metodo crearClienteCdtDigital controller"+ e.getMessage());
+            LOG.error("Se presento un error en el metodo buscarClienteCDTDigital_1 controller"+ e.getMessage());
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        LOG.info("Finaliza el metodo crearClienteCdtDigital Controller");
+        LOG.info("Finaliza el metodo buscarClienteCDTDigital_1 Controller");
+        return Response.status(Response.Status.OK).entity(clienteCDTDigitalTypeResponse).build();
+    }
+
+    @Override
+    public Response eliminarClienteCDT(Integer idCliente) {
+        LOG.info("Inicia el metodo buscarClienteCDTDigital_1 Controller");
+        try{
+            clienteCDTDigitalImpl.eliminarClienteCDT(idCliente);
+        }catch(ApplicationException e){
+            LOG.error("Se presento un error en el metodo buscarClienteCDTDigital_1 controller"+ e.getMessage());
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        LOG.info("Finaliza el metodo buscarClienteCDTDigital_1 Controller");
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+    @Override
+    public Response crearClienteCDTDigital(ClienteCDTDigitalType clienteCDTDigitalType) {
+        LOG.info("Inicia el metodo crearClienteCDTDigital Controller");
+        ClienteCDTDigitalType clienteCDTDigitalTypeResponse = null;
+        try{
+            clienteCDTDigitalTypeResponse = clienteCDTDigitalImpl.crearClienteCDTDigital(clienteCDTDigitalType);
+        }catch(ApplicationException e){
+            LOG.error("Se presento un error en el metodo crearClienteCDTDigital controller"+ e.getMessage());
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        LOG.info("Finaliza el metodo crearClienteCDTDigital Controller");
+        return Response.status(Response.Status.CREATED).entity(clienteCDTDigitalTypeResponse).build();
+    }
+
+    @Override
+    public Response editarClienteCDTDigital(Integer idCliente, ClienteCDTDigitalType clienteCDTDigitalType) {
+        LOG.info("Inicia el metodo crearClienteCDTDigital Controller");
+        ClienteCDTDigitalType clienteCDTDigitalTypeResponse;
+        try{
+            clienteCDTDigitalTypeResponse = clienteCDTDigitalImpl.editarClienteCDTDigital(idCliente, clienteCDTDigitalType);
+        }catch(ApplicationException e){
+            LOG.error("Se presento un error en el metodo crearClienteCDTDigital controller"+ e.getMessage());
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        LOG.info("Finaliza el metodo crearClienteCDTDigital Controller");
         return Response.status(Response.Status.CREATED).entity(clienteCDTDigitalTypeResponse).build();
     }
 }

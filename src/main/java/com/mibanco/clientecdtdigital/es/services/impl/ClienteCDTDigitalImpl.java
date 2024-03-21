@@ -26,7 +26,7 @@ public class ClienteCDTDigitalImpl implements IClienteCDTDigital {
 
     @Transactional
     @Override
-    public ClienteCDTDigitalType crearClienteCdtDigital(ClienteCDTDigitalType clienteCDTDigitalType) {
+    public ClienteCDTDigitalType crearClienteCDTDigital(ClienteCDTDigitalType clienteCDTDigitalType) {
         LOG.info("Inicia el metodo crearClienteCdtDigital Impl");
         try {
             ClienteCDTDigital clienteCDTDigital = clienteCDTDigitalMapper.clienteCDTDigitalTypeToEntity(clienteCDTDigitalType);
@@ -38,4 +38,49 @@ public class ClienteCDTDigitalImpl implements IClienteCDTDigital {
         LOG.info("Finaliza el metodo crearClienteCdtDigital Impl");
         return clienteCDTDigitalType;
     }
+
+    @Override
+    public ClienteCDTDigitalType buscarClienteCDTDigital(Integer idCliente) {
+        LOG.info("Inicia el metodo buscarClienteCDTDigital Impl");
+        ClienteCDTDigitalType clienteCDTDigitalType;
+        try {
+            clienteCDTDigitalType = clienteCDTDigitalMapper.clienteCDTDigitalEntityToType(clienteCDTDigitalDao.findById(idCliente.longValue()));
+        }catch(ApplicationException e){
+            LOG.error("Se presento un error en el metodo buscarClienteCDTDigital Impl"+ e.getMessage());
+            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
+        }
+        LOG.info("Finaliza el metodo buscarClienteCDTDigital Impl");
+        return clienteCDTDigitalType;
+    }
+
+    @Transactional
+    @Override
+    public void eliminarClienteCDT(Integer idCliente) {
+        LOG.info("Inicia el metodo eliminarClienteCDT Impl");
+        try {
+            clienteCDTDigitalDao.deleteById(idCliente.longValue());
+        }catch(ApplicationException e){
+            LOG.error("Se presento un error en el metodo eliminarClienteCDT Impl"+ e.getMessage());
+            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
+        }
+        LOG.info("Finaliza el metodo eliminarClienteCDT Impl");
+    }
+
+    @Transactional
+    public ClienteCDTDigitalType editarClienteCDTDigital(Integer idCliente, ClienteCDTDigitalType clienteCDTDigitalType) {
+        LOG.info("Inicia el metodo editarClienteCDTDigital Impl");
+        ClienteCDTDigitalType clienteCDTDigitalType1;
+        try {
+            ClienteCDTDigital clienteCDTDigital = clienteCDTDigitalDao.findById(idCliente.longValue());
+            clienteCDTDigitalType1 = clienteCDTDigitalMapper.clienteCDTDigitalEntityToType(clienteCDTDigital);
+            ClienteCDTDigital cambio = clienteCDTDigitalMapper.clienteCDTDigitalTypeToEntity(clienteCDTDigitalType);
+            clienteCDTDigitalDao.persistAndFlush(cambio);
+        }catch(ApplicationException e){
+            LOG.error("Se presento un error en el metodo editarClienteCDTDigital Impl"+ e.getMessage());
+            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
+        }
+        LOG.info("Finaliza el metodo editarClienteCDTDigital Impl");
+        return clienteCDTDigitalType1;
+    }
+
 }

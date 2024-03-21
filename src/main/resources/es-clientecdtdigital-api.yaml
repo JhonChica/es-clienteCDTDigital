@@ -26,7 +26,7 @@ paths:
     post:
       tags:
         - Crear cliente cdt digital
-      operationId: crearClienteCdtDigital
+      operationId: crearClienteCDTDigital
       requestBody:
         description: Crear cliente cdt digital
         content:
@@ -42,6 +42,84 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ClienteCDTDigitalType"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+  /v1/es/buscarClienteCDT/{id_cliente}:
+    get:
+      tags:
+        - Buscar cliente cdt digital
+      operationId: buscarClienteCDTDigital
+      parameters:
+        - in: path
+          name: id_cliente
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: Id clienteCDTDigital
+      responses:
+        "200":
+          description: Usuario encontrado.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ClienteCDTDigitalType"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+  /v1/es/editarClienteCDT/{id_cliente}:
+    put:
+      tags:
+        - Buscar cliente cdt digital
+      operationId: editarClienteCDTDigital
+      parameters:
+        - in: path
+          name: id_cliente
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: Editar clienteCDTDigital
+      requestBody:
+        description: Editar cliente cdt digital
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClienteCDTDigitalType"
+      responses:
+        "200":
+          description: Usuario encontrado.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ClienteCDTDigitalType"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+  /v1/es/eliminarClienteCDT/{id_cliente}:
+    delete:
+      tags:
+        - Buscar cliente cdt digital
+      operationId: eliminarClienteCDT
+      parameters:
+        - in: path
+          name: id_cliente
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: eliminar clienteCDTDigital por id
+      responses:
+        "200":
+          description: Usuario eliminado.
         "400":
           description: "Parámetros de entrada no validos."
         "404":
@@ -207,30 +285,30 @@ components:
         descripcion:
           type: string
       enum:
-        - codigo: "05"
-          descripcion: "ANTIOQUIA"
-        - codigo: "08"
-          descripcion: "ATLANTICO"
-        - codigo: "11"
-          descripcion: "BOGOTA D.C."
-        - codigo: "12"
-          descripcion: "FUERA DEL PAIS"
-        - codigo: "13"
-          descripcion: "BOLIVAR"
-        - codigo: "15"
-          descripcion: "BOYACA"
-        - codigo: "17"
-          descripcion: "CALDAS"
-        - codigo: "18"
-          descripcion: "CAQUETA"
-        - codigo: "19"
-          descripcion: "CAUCA"
-        - codigo: "20"
-          descripcion: "CESAR"
-        - codigo: "23"
-          descripcion: "CORDOBA"
-        - codigo: "25"
-          descripcion: "CUNDINAMARCA"
+        - codigo: 05
+          descripcion: ANTIOQUIA
+        - codigo: 08
+          descripcion: ATLANTICO
+        - codigo: 11
+          descripcion: BOGOTA D.C.
+        - codigo: 12
+          descripcion: FUERA DEL PAIS
+        - codigo: 13
+          descripcion: BOLIVAR
+        - codigo: 15
+          descripcion: BOYACA
+        - codigo: 17
+          descripcion: CALDAS
+        - codigo: 18
+          descripcion: CAQUETA
+        - codigo: 19
+          descripcion: CAUCA
+        - codigo: 20
+          descripcion: CESAR
+        - codigo: 23
+          descripcion: CORDOBA
+        - codigo: 25
+          descripcion: CUNDINAMARCA
     CiudadEnum:
       type: string
       properties:

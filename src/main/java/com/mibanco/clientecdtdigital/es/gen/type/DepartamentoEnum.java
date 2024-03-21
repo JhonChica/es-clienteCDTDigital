@@ -11,29 +11,29 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum DepartamentoEnum {
   
-  _05_DESCRIPCION_ANTIOQUIA_("{\"codigo\":\"05\",\"descripcion\":\"ANTIOQUIA\"}"),
+  _5_DESCRIPCION_ANTIOQUIA_("{\"codigo\":5,\"descripcion\":\"ANTIOQUIA\"}"),
   
   _08_DESCRIPCION_ATLANTICO_("{\"codigo\":\"08\",\"descripcion\":\"ATLANTICO\"}"),
   
-  _11_DESCRIPCION_BOGOTA_D_C_("{\"codigo\":\"11\",\"descripcion\":\"BOGOTA D.C.\"}"),
+  _11_DESCRIPCION_BOGOTA_D_C_("{\"codigo\":11,\"descripcion\":\"BOGOTA D.C.\"}"),
   
-  _12_DESCRIPCION_FUERA_DEL_PAIS_("{\"codigo\":\"12\",\"descripcion\":\"FUERA DEL PAIS\"}"),
+  _12_DESCRIPCION_FUERA_DEL_PAIS_("{\"codigo\":12,\"descripcion\":\"FUERA DEL PAIS\"}"),
   
-  _13_DESCRIPCION_BOLIVAR_("{\"codigo\":\"13\",\"descripcion\":\"BOLIVAR\"}"),
+  _13_DESCRIPCION_BOLIVAR_("{\"codigo\":13,\"descripcion\":\"BOLIVAR\"}"),
   
-  _15_DESCRIPCION_BOYACA_("{\"codigo\":\"15\",\"descripcion\":\"BOYACA\"}"),
+  _15_DESCRIPCION_BOYACA_("{\"codigo\":15,\"descripcion\":\"BOYACA\"}"),
   
-  _17_DESCRIPCION_CALDAS_("{\"codigo\":\"17\",\"descripcion\":\"CALDAS\"}"),
+  _17_DESCRIPCION_CALDAS_("{\"codigo\":17,\"descripcion\":\"CALDAS\"}"),
   
-  _18_DESCRIPCION_CAQUETA_("{\"codigo\":\"18\",\"descripcion\":\"CAQUETA\"}"),
+  _18_DESCRIPCION_CAQUETA_("{\"codigo\":18,\"descripcion\":\"CAQUETA\"}"),
   
-  _19_DESCRIPCION_CAUCA_("{\"codigo\":\"19\",\"descripcion\":\"CAUCA\"}"),
+  _19_DESCRIPCION_CAUCA_("{\"codigo\":19,\"descripcion\":\"CAUCA\"}"),
   
-  _20_DESCRIPCION_CESAR_("{\"codigo\":\"20\",\"descripcion\":\"CESAR\"}"),
+  _20_DESCRIPCION_CESAR_("{\"codigo\":20,\"descripcion\":\"CESAR\"}"),
   
-  _23_DESCRIPCION_CORDOBA_("{\"codigo\":\"23\",\"descripcion\":\"CORDOBA\"}"),
+  _23_DESCRIPCION_CORDOBA_("{\"codigo\":23,\"descripcion\":\"CORDOBA\"}"),
   
-  _25_DESCRIPCION_CUNDINAMARCA_("{\"codigo\":\"25\",\"descripcion\":\"CUNDINAMARCA\"}");
+  _25_DESCRIPCION_CUNDINAMARCA_("{\"codigo\":25,\"descripcion\":\"CUNDINAMARCA\"}");
 
   private String value;
 

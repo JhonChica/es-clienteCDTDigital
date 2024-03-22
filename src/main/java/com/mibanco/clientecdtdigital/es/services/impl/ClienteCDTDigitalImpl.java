@@ -24,7 +24,6 @@ public class ClienteCDTDigitalImpl implements IClienteCDTDigital {
     ClienteCDTDigitalDao clienteCDTDigitalDao;
 
     @Transactional
-    @Override
     public ClienteCDTDigitalType crearClienteCDTDigital(ClienteCDTDigitalType clienteCDTDigitalType) {
         LOG.info("Inicia el metodo crearClienteCdtDigital Impl");
         try {
@@ -51,7 +50,6 @@ public class ClienteCDTDigitalImpl implements IClienteCDTDigital {
         return clienteCDTDigitalType;
     }
     @Transactional
-    @Override
     public void eliminarClienteCDT(Integer idCliente) {
         LOG.info("Inicia el metodo eliminarClienteCDT Impl");
         try {
@@ -66,18 +64,25 @@ public class ClienteCDTDigitalImpl implements IClienteCDTDigital {
     @Transactional
     public ClienteCDTDigitalType editarClienteCDTDigital(Integer idCliente, ClienteCDTDigitalType clienteCDTDigitalType) {
         LOG.info("Inicia el metodo editarClienteCDTDigital Impl");
-        ClienteCDTDigitalType clienteCDTDigitalType1;
+        ClienteCDTDigitalType clienteCDTDigitalTypeResponse;
         try {
             ClienteCDTDigital clienteCDTDigital = clienteCDTDigitalDao.findById(idCliente.longValue());
-            clienteCDTDigitalType1 = clienteCDTDigitalMapper.clienteCDTDigitalEntityToType(clienteCDTDigital);
-            ClienteCDTDigital cambio = clienteCDTDigitalMapper.clienteCDTDigitalTypeToEntity(clienteCDTDigitalType);
-            clienteCDTDigitalDao.persistAndFlush(cambio);
+            clienteCDTDigitalTypeResponse = clienteCDTDigitalMapper.clienteCDTDigitalEntityToType(clienteCDTDigital);
+
+            ClienteCDTDigital clienteCDTDigitalCambio = clienteCDTDigitalMapper.clienteCDTDigitalTypeToEntity(clienteCDTDigitalType);
+            clienteCDTDigital.setFechaNacimientoDia(clienteCDTDigitalCambio.getFechaNacimientoDia());
+            clienteCDTDigital.setFechaNacimientoMes(clienteCDTDigitalCambio.getFechaNacimientoMes());
+            clienteCDTDigital.setFechaNacimientoAno(clienteCDTDigitalCambio.getFechaNacimientoAno());
+            clienteCDTDigital.setTelefonoPrincipal(clienteCDTDigitalCambio.getTelefonoPrincipal());
+            clienteCDTDigital.setOcupacion(clienteCDTDigitalCambio.getOcupacion());
+
         }catch(ApplicationException e){
             LOG.error("Se presento un error en el metodo editarClienteCDTDigital Impl"+ e.getMessage());
             throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
         }
+
         LOG.info("Finaliza el metodo editarClienteCDTDigital Impl");
-        return clienteCDTDigitalType1;
+        return clienteCDTDigitalTypeResponse;
     }
 
 }

@@ -67,6 +67,6 @@ public class ClienteCDTDigidalController implements V1ClientecdtdigitalApi {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         LOG.info("Finaliza el metodo crearClienteCDTDigital Controller");
-        return Response.status(Response.Status.CREATED).entity(clienteCDTDigitalTypeResponse).build();
+        return Response.status(Response.Status.OK).entity(clienteCDTDigitalTypeResponse).build();
     }
 }

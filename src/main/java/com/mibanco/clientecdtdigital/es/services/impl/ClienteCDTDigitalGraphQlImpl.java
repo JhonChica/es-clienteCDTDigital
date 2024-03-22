@@ -1,10 +1,10 @@
 package com.mibanco.clientecdtdigital.es.services.impl;
 
-import com.mibanco.clientecdtdigital.es.dao.ClienteCDTDigitalDao;
+import com.mibanco.clientecdtdigital.es.dao.ClienteCDTDigitalGraphQlDao;
 import com.mibanco.clientecdtdigital.es.entity.ClienteCDTDigital;
 import com.mibanco.clientecdtdigital.es.gen.type.ClienteCDTDigitalType;
 import com.mibanco.clientecdtdigital.es.utils.exception.ApplicationException;
-import com.mibanco.clientecdtdigital.es.utils.mapper.ClienteCDTDigitalMapper;
+import com.mibanco.clientecdtdigital.es.utils.mapper.ClienteCDTDigitalGraphQlMapper;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -15,18 +15,18 @@ import java.util.List;
 
 
 @ApplicationScoped
-public class ClienteCDTDigitalImpl {
-    private  static  final Logger LOG = LoggerFactory.getLogger(ClienteCDTDigitalImpl.class);
+public class ClienteCDTDigitalGraphQlImpl {
+    private  static  final Logger LOG = LoggerFactory.getLogger(ClienteCDTDigitalGraphQlImpl.class);
     @Inject
-    ClienteCDTDigitalMapper clienteCDTDigitalMapper;
+    ClienteCDTDigitalGraphQlMapper clienteCDTDigitalGraphQlMapper;
     @Inject
-    ClienteCDTDigitalDao clienteCDTDigitalDao;
+    ClienteCDTDigitalGraphQlDao clienteCDTDigitalGraphQlDao;
 
     public List<ClienteCDTDigital> obtenerTodosLosClienteCDTDigitalImpl(){
         LOG.info("Inicia el proceso de obtenerTodosLosClienteCDTDigitalImpl Impl");
         List<ClienteCDTDigital> allClient = null;
         try{
-            allClient = clienteCDTDigitalDao.listAll();
+            allClient = clienteCDTDigitalGraphQlDao.listAll();
         }catch(ApplicationException e){
             LOG.error("Error en el proceso de obtenerTodosLosClienteCDTDigitalImpl Impl: " + e.getMessage());
         }
@@ -39,13 +39,24 @@ public class ClienteCDTDigitalImpl {
         LOG.info("Inicia el proceso de crearClienteCDTDigitalImpl Impl");
         ClienteCDTDigital clienteCDTDigital = null;
         try{
-            clienteCDTDigital = clienteCDTDigitalMapper.clienteCDTDigitalTypeToEntity(clienteCDTDigitalType);
-            clienteCDTDigitalDao.persist(clienteCDTDigital);
+            clienteCDTDigital = clienteCDTDigitalGraphQlMapper.clienteCDTDigitalTypeToEntity(clienteCDTDigitalType);
+            clienteCDTDigitalGraphQlDao.persist(clienteCDTDigital);
         }catch(ApplicationException e){
             LOG.error("Error en el proceso de crearClienteCDTDigitalImpl Impl: " + e.getMessage());
         }
         LOG.info("Finaliza el proceso de crearClienteCDTDigitalImpl Impl");
         return clienteCDTDigital;
+    }
+
+    @Transactional
+    public void eliminarClienteCDTDigitalImpl(Long id){
+        LOG.info("Inicia el proceso de crearClienteCDTDigitalImpl Impl");
+        try{
+            clienteCDTDigitalGraphQlDao.deleteById(id);
+        }catch(ApplicationException e){
+            LOG.error("Error en el proceso de crearClienteCDTDigitalImpl Impl: " + e.getMessage());
+        }
+        LOG.info("Finaliza el proceso de crearClienteCDTDigitalImpl Impl");
     }
 
 }

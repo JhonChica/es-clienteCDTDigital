@@ -47,7 +47,7 @@ public class ClienteCDTDigidalGraphQlController {
     }
 
     @Mutation("eliminarCliente")
-    public void eliminarClienteCDTDigitalGraphQl(@Name("eliminar") Integer id){
+    public void  eliminarClienteCDTDigitalGraphQl(@Name("id") Integer id){
         LOG.info("Inicia el proceso de crearClienteCDTDigitalGraphQl Impl");
         try{
             clienteCDTDigitalGraphQlImpl.eliminarClienteCDTDigitalImpl(id.longValue());
